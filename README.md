@@ -63,6 +63,8 @@ The initail version is hardcode so there are some limitations:
 
 8. Unsupport variable tracking while debugging so the image cannot be refreshed automatically. You must click the variable again to refresh.
 
+9. Do not support multithreading due to vscode debugging api limitation.
+
 ## Release Notes
 
 ### 0.0.6
