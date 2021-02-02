@@ -17,18 +17,31 @@ export default class ViewImageService {
 
 		let res = await session.customRequest('threads', {});
 		let threads = res.threads;
-		let mainThread = threads[0].id;
+		let variables : any[] = [];
+		let callStack = 0;
 
-		res = await session.customRequest('stackTrace', { threadId: mainThread });
-		let stacks = res.stackFrames;
-		let callStack = stacks[0].id;
+		for (const thread of threads) {
+			let threadid = thread.id;
 
-		res = await session.customRequest('scopes', {frameId: callStack});
-		let scopes = res.scopes;
-		let local = scopes[0];
-
-		res = await session.customRequest('variables', { variablesReference: local.variablesReference });
-		let variables: any[] = res.variables;
+			res = await session.customRequest('stackTrace', { threadId: threadid });
+			let stacks = res.stackFrames;
+			callStack = stacks[0].id;
+	
+			res = await session.customRequest('scopes', {frameId: callStack});
+			let scopes = res.scopes;
+			let local = scopes[0];
+			
+			try 
+			{
+				res = await session.customRequest('variables', { variablesReference: local.variablesReference });
+				variables = res.variables;
+				break;
+			}
+			catch (e)
+			{
+				console.log(e);
+			}
+		}
 
 		const selectedVariable = document.getText(document.getWordRangeAtPosition(range.start));
 
