@@ -4,6 +4,10 @@ All notable changes to the "simply-view-image-for-python-opencv-debugging" exten
 
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
+## [0.0.8]
+
+- Now the global variables can be view.
+
 ## [0.0.7]
 
 - Using a workaround for supporting multithreading.
