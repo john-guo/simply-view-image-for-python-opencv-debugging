@@ -67,7 +67,7 @@ The initail version is hardcode so there are some limitations:
 
 ### 0.0.8
 
-Now the global variables can be view, but still cannot know which thread current within so that if many variables with same name in different threads the result will be confused.
+Now the global variables can be view, but still cannot know which thread or stack frame current within so that if many variables with the same name in different threads or different stack frames the result will be confused.
 
 ### 0.0.7
 
