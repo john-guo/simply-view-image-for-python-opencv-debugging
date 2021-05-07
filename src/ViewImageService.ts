@@ -15,37 +15,37 @@ export default class ViewImageService {
 			return;
 		}
 
+		const selectedVariable = document.getText(document.getWordRangeAtPosition(range.start));
+
 		let res = await session.customRequest('threads', {});
 		let threads = res.threads;
 		let variables : any[] = [];
+		let targetVariable = undefined;
 		let callStack = 0;
 
-		for (const thread of threads) {
-			let threadid = thread.id;
-
-			res = await session.customRequest('stackTrace', { threadId: threadid });
+		end:
+		for (const thread of threads) 
+		{
+			res = await session.customRequest('stackTrace', { threadId: thread.id });
 			let stacks = res.stackFrames;
-			callStack = stacks[0].id;
-	
-			res = await session.customRequest('scopes', {frameId: callStack});
-			let scopes = res.scopes;
-			let local = scopes[0];
-			
-			try 
+			for (let stack of stacks)
 			{
-				res = await session.customRequest('variables', { variablesReference: local.variablesReference });
-				variables = res.variables;
-				break;
-			}
-			catch (e)
-			{
-				console.log(e);
+				callStack = stack.id
+				res = await session.customRequest('scopes', {frameId: callStack});
+				let scopes = res.scopes;
+				for (let scope of scopes)
+				{
+					res = await session.customRequest('variables', {variablesReference: scope.variablesReference});
+					variables = res.variables;
+					targetVariable = variables.find( v => v.name === selectedVariable);
+					if (targetVariable !== undefined)
+					{
+						break end;
+					}
+				}
 			}
 		}
 
-		const selectedVariable = document.getText(document.getWordRangeAtPosition(range.start));
-
-		let targetVariable = variables.find( v => v.name === selectedVariable);
 		if (targetVariable === undefined)
 		{
 			return;
