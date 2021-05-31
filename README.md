@@ -71,7 +71,7 @@ Now the global variables can be view, but still cannot know which thread or stac
 
 ### 0.0.7
 
-Using a workaround for supporting multithreading.
+Using a workaround for supporting multithreading.( Thanks to [zhfkt](https://github.com/zhfkt) )
 
 ### 0.0.6
 
