@@ -4,6 +4,10 @@ All notable changes to the "simply-view-image-for-python-opencv-debugging" exten
 
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
+## [0.0.9]
+
+- Add tf2 tensor support.
+
 ## [0.0.8]
 
 - Now the global variables can be view.

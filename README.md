@@ -65,13 +65,17 @@ The initail version is hardcode so there are some limitations:
 
 ## Release Notes
 
+### 0.0.9
+
+Support TF2 tensor(Eager Execution must be enabled) or any other object that has a "numpy()" function which can convert it to a numpy array. Thanks to [saeedizadi](https://github.com/saeedizadi) (https://github.com/john-guo/simply-view-image-for-python-opencv-debugging/issues/13)
+
 ### 0.0.8
 
 Now the global variables can be view, but still cannot know which thread or stack frame current within so that if many variables with the same name in different threads or different stack frames the result will be confused.
 
 ### 0.0.7
 
-Using a workaround for supporting multithreading.( Thanks to [zhfkt](https://github.com/zhfkt) )
+Using a workaround for supporting multithreading. Thanks to [zhfkt](https://github.com/zhfkt) (https://github.com/john-guo/simply-view-image-for-python-opencv-debugging/issues/6)
 
 ### 0.0.6
 
@@ -93,7 +97,7 @@ Update README.md
 
 ### 0.0.2
 
-Thanks to [marisancans](https://github.com/marisancans) add support for float np array. Notice it's a hardcode workaround. Because of this fixing the python file must import numpy as np also.
+Add support for float np array. Notice it's a hardcode workaround. Because of this fixing the python file must import numpy as np also. Thanks to [marisancans](https://github.com/marisancans) (https://github.com/john-guo/simply-view-image-for-python-opencv-debugging/issues/1)
 
 ### 0.0.1
 

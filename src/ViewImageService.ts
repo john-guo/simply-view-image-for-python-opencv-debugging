@@ -55,8 +55,8 @@ export default class ViewImageService {
 		let savepath = path.replace(/\\/g, '/');
 
 		const vn = targetVariable.evaluateName; // var name
-		const float_expression =  `${vn} * 255.0 if (isinstance(${vn}, (np.ndarray)) and (${vn}.dtype == np.float64 or ${vn}.dtype == np.float32)) else ${vn}`;
-		const expression = `cv2.imwrite('${savepath}', ${float_expression})`;
+		const nparray_expression =  `(${vn}.numpy() * 255.0 if (hasattr(${vn}, 'dtype')) and (${vn}.dtype == np.float64 or ${vn}.dtype == np.float32) else ${vn}.numpy()) if callable(getattr(${vn}, 'numpy', None)) else (${vn} * 255.0 if (isinstance(${vn}, (np.ndarray)) and (${vn}.dtype == np.float64 or ${vn}.dtype == np.float32)) else ${vn})`;
+		const expression = `cv2.imwrite('${savepath}', ${nparray_expression})`;
 		res = await session.customRequest("evaluate", { expression: expression, frameId: callStack, context:'hover' });
 		console.log(`evaluate ${expression} result: ${res.result}`);
 
