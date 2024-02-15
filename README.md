@@ -65,6 +65,9 @@ The initail version is hardcode so there are some limitations:
 
 ## Release Notes
 
+### 0.0.10
+Due to a change in the Python debugger type name from 'python' to 'debugpy' after a Visual Studio Code update, this extension became incompatible. This update addresses the issue, ensuring compatibility with the latest VSCode version 1.86.1. Thanks to [aslampr07](https://github.com/aslampr07) (https://github.com/john-guo/simply-view-image-for-python-opencv-debugging/issues/24)
+
 ### 0.0.9
 
 Support TF2 tensor(Eager Execution must be enabled) or any other object that has a "numpy()" function which can convert it to a numpy array. Thanks to [saeedizadi](https://github.com/saeedizadi) (https://github.com/john-guo/simply-view-image-for-python-opencv-debugging/issues/13)

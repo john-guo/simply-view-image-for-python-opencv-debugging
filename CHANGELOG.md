@@ -4,6 +4,11 @@ All notable changes to the "simply-view-image-for-python-opencv-debugging" exten
 
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
+## [0.0.10]
+
+- Add "onDebugResolve:debugpy" to package.json (activationEvents) 
+- Compatibility with registerCodeActionsProvider (use DocumentSelector instead of string)
+
 ## [0.0.9]
 
 - Add tf2 tensor support.

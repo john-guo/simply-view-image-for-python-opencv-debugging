@@ -13,9 +13,8 @@ const WORKING_DIR = 'svifpod';
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
-
 	let usetmp = vscode.workspace.getConfiguration("svifpod").get("usetmppathtosave", true);
-	let dir = context.storagePath as string;
+	let dir = context.globalStorageUri.path as string;
 	if (usetmp || dir === undefined)
 	{
 		dir = tmpdir();
@@ -42,7 +41,7 @@ export function activate(context: vscode.ExtensionContext) {
 	console.log('Congratulations, your extension "simply-view-image-for-python-opencv-debugging" is now active!');
 
 	context.subscriptions.push(
-		vscode.languages.registerCodeActionsProvider('python', 
+		vscode.languages.registerCodeActionsProvider({ language: 'python' }, 
 		new PythonOpencvImageProvider(), {	providedCodeActionKinds: [vscode.CodeActionKind.Empty] }));
 
 
