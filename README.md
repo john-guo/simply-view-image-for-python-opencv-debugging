@@ -65,6 +65,9 @@ The initail version is hardcode so there are some limitations:
 
 ## Release Notes
 
+### 0.0.11
+Fix an issue, use the globalStorageUri.fsPath instead of globalStorageUri.path. 
+
 ### 0.0.10
 Due to a change in the Python debugger type name from 'python' to 'debugpy' after a Visual Studio Code update, this extension became incompatible. This update addresses the issue, ensuring compatibility with the latest VSCode version 1.86.1. Thanks to [aslampr07](https://github.com/aslampr07) (https://github.com/john-guo/simply-view-image-for-python-opencv-debugging/issues/24)
 

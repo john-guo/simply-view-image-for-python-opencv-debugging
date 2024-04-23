@@ -4,6 +4,9 @@ All notable changes to the "simply-view-image-for-python-opencv-debugging" exten
 
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
+## [0.0.11]
+- Fix an issue, use the globalStorageUri.fsPath instead of globalStorageUri.path. 
+
 ## [0.0.10]
 
 - Add "onDebugResolve:debugpy" to package.json (activationEvents) 
